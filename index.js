@@ -9,16 +9,16 @@ function create(){
 async function search(){
     event.preventDefault();
     var cityName=document.querySelector("#cityName").value;
-    //     try{
-    //         var details=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=72925e9d19ecb93bcadf44f5c8eea5f9`)
-    //         var data = await details.json();
-    //         pageCreator(data);
-    //     }catch{
-    //         pageCreator(error);
-    //     }
-        var details=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=72925e9d19ecb93bcadf44f5c8eea5f9`)
+        try{
+            var details=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=72925e9d19ecb93bcadf44f5c8eea5f9`)
             var data = await details.json();
             pageCreator(data);
+        }catch(error){
+            pageCreator(error);
+        }
+        // var details=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=72925e9d19ecb93bcadf44f5c8eea5f9`)
+        //     var data = await details.json();
+        //     pageCreator(data);
 }
 
 
@@ -28,7 +28,7 @@ function pageCreator(data){
 
     var itemsDiv=document.createElement("div");
     itemsDiv.setAttribute("id","itemsDiv");
-    if(data.id==404){
+    if(data.cod==404){
         alert("please Enter correct city")
     }else{
         var headingElement=document.createElement("h1");
@@ -51,7 +51,7 @@ function pageCreator(data){
     var maxtemp=parseInt(data.main.temp_max)-273;
     var mintemp=parseInt(data.main.temp_min)-273;
 
-    tempElement.innerText="Temperature Feel;"+temp;
+    tempElement.innerText="Temperature Feel:"+temp;
     maxtempElement.innerText="Maximum Temp:"+ maxtemp;
     mintempElement.innerText="Minimum Temp:"+mintemp;
 
@@ -91,7 +91,7 @@ function pageCreator(data){
     var sunrise=data.sys.sunrise;    
     sunriseElement.innerText=sunrise;
     var sunrisedes=document.createElement("h2");
-    sunrisedes.innerText="Sun set :"
+    sunrisedes.innerText="Sun Rise :"
     sunrisediv.append(sunrisedes,sunriseElement)
 
     var sunSetElement=document.createElement("h2");
@@ -100,7 +100,7 @@ function pageCreator(data){
     var sunset=data.sys.sunset;
     sunSetElement.innerText=sunset;
     var sunSetdes=document.createElement("h2");
-    sunSetdes.innerText="Sun rise :"
+    sunSetdes.innerText="Sun Set :"
     sunSetdiv.append(sunSetdes,sunSetElement)
 
     var decsElement=document.createElement("h2");
@@ -123,11 +123,6 @@ function pageCreator(data){
 
     itemsDiv.append(headingDiv,sunrisediv,tempdiv,pressdiv,humdiv,winddiv,sunSetdiv,decsdiv);
     document.querySelector("#weatherContent").append(itemsDiv);
-
-
-
-
-    console.log(data.weather[0].description);
     }  
 
 }
