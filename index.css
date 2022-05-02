@@ -1,0 +1,53 @@
+#container{
+    display: flex;
+    flex-direction: column;
+}
+#input{
+    display: flex;
+    flex-direction: column;
+}
+#input form{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+#cityName{
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 20px;
+    width: 800px;
+    height: 50px;
+}
+#submitButton{
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 20px;
+    width: 800px;
+    height: 50px;
+    background-color: brown;
+    color: white;
+    font-size: large;
+}
+#weatherContent #itemsDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+#weatherContent #itemsDiv div{
+    display: flex;
+    margin: 10px;
+    background-color: azure;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 2px 20px 2px 20px;
+}
+#weatherContent #itemsDiv h1{
+align-items: center;
+}
+#tempDiv{
+    justify-content: space-around;
+}
+#headingDiv{
+    justify-content: center;
+}
