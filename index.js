@@ -120,10 +120,36 @@ function pageCreator(data){
     }
     decsdiv.append(decsElement,desimg);
 
+    var weatherReportButton=document.createElement("button")
+    weatherReportButton.innerText="Get weather Report"
+    weatherReportButton.setAttribute("id","weatherReportButton");
+    var weatherReportdiv=document.createElement("div");
+    weatherReportdiv.setAttribute("id","weatherReportdiv")
+    // weatherReportdiv.setAttribute("style","background-color: white,box-shadow:none")
+    weatherReportdiv.append(weatherReportButton)
+
+    weatherReportButton.addEventListener("click",()=>{
+        var report=JSON.parse(localStorage.getItem("weatherReportData")) || []
+        var reportData={
+            place:heading,
+            temperature:temp,
+            windSpeed:windSpeed,
+            description:desc,
+            humidity:humidity,
+        }
+        console.log(reportData)
+        localStorage.setItem("weatherReportData",JSON.stringify(reportData))
+        window.location.href="./weatherReport.html"
+    });
+
 
     itemsDiv.append(headingDiv,sunrisediv,tempdiv,pressdiv,humdiv,winddiv,sunSetdiv,decsdiv);
-    document.querySelector("#weatherContent").append(itemsDiv);
-    }  
+    document.querySelector("#weatherContent").append(itemsDiv,weatherReportdiv);
+    } 
+    
+   
+
+    
 
 }
 

@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>weatherReport</title>
+    <style>
+        #container{
+            box-sizing: border-box;
+            padding: 50px;
+            margin: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #reportDiv{
+            background-color: teal;
+            color: white;
+            box-sizing: border-box;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #button{
+            background-color: rgb(6, 47, 34);
+            color: white;
+            font-size: large;
+            border-radius: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 400px;
+        }
+
+    </style>
 </head>
 <body>
     <div id="container">
-        <p>
-            
-        </p>
     </div>
 </body>
+<script>
+    var reportdata =JSON.parse(localStorage.getItem("weatherReportData")) || [] ;
+    var report=document.createElement("h2");
+    var reportDiv=document.createElement("div");
+    reportDiv.setAttribute("id","reportDiv")
+
+    report.innerText="This is breif weather report for the place of "+reportdata.place +". Today the temperature experienced the people in "+reportdata.place + " is "+
+    reportdata.temperature+ " c. The humidity is "+reportdata.humidity +" g.kg-1 wind speed of this place is "+reportdata.windSpeed+" km The over all day experience in this place is "+ reportdata.description+ ". Thank you for visiting masai Weather report website."
+    reportDiv.append(report)
+    var thanks=document.createElement("h1");
+    thanks.setAttribute("id","thanks")
+    thanks.innerText=" Please visit Again"
+
+    var btn=document.createElement("button");
+    btn.innerText="Back to home"
+    btn.setAttribute("id","button");
+    btn.addEventListener("click",()=>{
+        window.location.href="./index.html"
+    });
+
+    console.log(reportdata)
+    document.querySelector("#container").append(reportDiv,thanks,btn);
+</script>
 </html>
