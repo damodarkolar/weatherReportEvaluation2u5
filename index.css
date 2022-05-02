@@ -37,7 +37,7 @@
 #weatherContent #itemsDiv div{
     display: flex;
     margin: 10px;
-    background-color: azure;
+    background-color: rgb(182, 144, 38);
     border-radius: 10px;
     box-sizing: border-box;
     padding: 2px 20px 2px 20px;
@@ -50,4 +50,27 @@ align-items: center;
 }
 #headingDiv{
     justify-content: center;
+}
+#getweatherReport{
+    display: flex;
+    justify-content: center;
+}
+#weatherReportButton{
+    width: 500px;
+    height: 50px;
+    background-color: blue;
+    border-radius: 20px;
+    color: white;
+    font-size: large;
+}
+#decsDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid red;
+}
+img{
+    height: 100%;
+    width: 100px;
+    border-radius: 20px;
 }
